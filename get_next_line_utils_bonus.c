@@ -6,7 +6,7 @@
 /*   By: bschweit <bschweit@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 04:28:08 by poseident         #+#    #+#             */
-/*   Updated: 2023/08/15 05:13:59 by bschweit         ###   ########.fr       */
+/*   Updated: 2023/08/15 20:57:21 by bschweit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ char	*ft_strchr(const char *s, int c)
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	char *p;
+	char	*p;
+
 	p = (char *)b;
 	while (len > 0)
 	{
@@ -42,10 +43,11 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-int found_char(char *str, char c)
+int	found_char(char *str, char c)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	if (!str || str[0] == 0)
 		return (0);
 	while (str[i] != '\0')
@@ -57,10 +59,11 @@ int found_char(char *str, char c)
 	return (0);
 }
 
-size_t ft_strlen(char *tmp)
+size_t	ft_strlen(char *tmp)
 {
-	size_t i = 0;
+	size_t	i;
 
+	i = 0;
 	if (!tmp)
 		return (0);
 	while (tmp[i] != '\0')

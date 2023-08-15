@@ -1,0 +1,9 @@
+These functions check whether c, which must have the value of an
+unsigned char or EOF, falls into a certain character class
+according to the specified locale.  The functions without the
+"_l" suffix perform the check based on the current locale.
+The functions with the "_l" suffix perform the check based on the
+locale specified by the locale object locale.  The behavior of
+these functions is undefined if locale is the special locale
+object LC_GLOBAL_LOCALE (see duplocale(3)) or is not a valid
+locale object handle.
