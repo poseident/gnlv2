@@ -6,7 +6,7 @@
 /*   By: bschweit <bschweit@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 20:46:57 by bschweit          #+#    #+#             */
-/*   Updated: 2023/08/15 20:48:23 by bschweit         ###   ########.fr       */
+/*   Updated: 2023/08/21 05:47:01 by bschweit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # include <fcntl.h>
 # include <string.h>
 
-char	*ft_strchr(const char *s, int c);
-void	*ft_memset(void *b, int c, size_t len);
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *s);
 char	*ft_strjoin(char *s1, char *s2);

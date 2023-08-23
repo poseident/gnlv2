@@ -6,42 +6,11 @@
 /*   By: bschweit <bschweit@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 04:28:08 by poseident         #+#    #+#             */
-/*   Updated: 2023/08/15 20:57:21 by bschweit         ###   ########.fr       */
+/*   Updated: 2023/08/21 06:00:23 by bschweit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	if (!s || s[0] == 0)
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *)(s + i));
-		i++;
-	}
-	if (s[i] == (char)c)
-		return ((char *)(s + i));
-	return (NULL);
-}
-
-void	*ft_memset(void *b, int c, size_t len)
-{
-	char	*p;
-
-	p = (char *)b;
-	while (len > 0)
-	{
-		p[len - 1] = c;
-		len--;
-	}
-	return (b);
-}
+#include "get_next_line_bonus.h"
 
 int	found_char(char *str, char c)
 {

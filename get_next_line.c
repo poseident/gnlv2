@@ -21,7 +21,7 @@ char	*real_line(char *line_buf)
 	char	*str;
 
 	i = 0;
-	if (!line_buf[i])
+	if (!line_buf[i] || !line_buf)
 		return (NULL);
 	while (line_buf[i] != '\0' && line_buf[i] != '\n')
 		i++;
@@ -52,11 +52,13 @@ char	*read_file(int fd, char *line_fd)
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	while (!ft_strchr(line_fd, '\n') && readed != 0)
+	while (!found_char(line_fd, '\n') && readed != 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
 		if (readed == -1)
 		{
+			if (line_fd)
+				free(line_fd);
 			free(buf);
 			return (NULL);
 		}
@@ -79,7 +81,6 @@ char	*clean_line_buf(char *line_buf)
 		i++;
 	if (line_buf[i] == '\0')
 	{
-		ft_memset(line_buf, 0, ft_strlen(line_buf));
 		free(line_buf);
 		return (NULL);
 	}
@@ -91,7 +92,6 @@ char	*clean_line_buf(char *line_buf)
 		str[j++] = line_buf[i];
 	}
 	str[j] = '\0';
-	ft_memset(line_buf, 0, ft_strlen(line_buf));
 	free(line_buf);
 	return (str);
 }

@@ -13,38 +13,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <stdio.h>
-#include "get_next_line.h"
-
-/*int	main(void)
-{
-	char	*line;
-	int		i;
-	int		fd1;
-	int		fd2;
-	int		fd3;
-
-	fd1 = open("test.txt", O_RDONLY);
-	//fd2 = open("test2.txt", O_RDONLY);
-	//fd3 = open("test3.txt", O_RDONLY);
-	i = 1;
-	while (i < 20)
-	{
-		line = get_next_line(fd1);
-		printf("line [%02d]: %s", i, line);
-		free(line);
-		line = get_next_line(fd2);
-		printf("line [%02d]: %s", i, line);
-		free(line);
-		line = get_next_line(fd3);
-		printf("line [%02d]: %s", i, line);
-		free(line);
-		i++;
-	}
-	close(fd1);
-	//close(fd2);
-	//close(fd3);
-	return (0);
-}*/
+#include "get_next_line_bonus.h"
 
 char	*real_line(char *line_buf)
 {
@@ -52,7 +21,7 @@ char	*real_line(char *line_buf)
 	char	*str;
 
 	i = 0;
-	if (!line_buf[i])
+	if (!line_buf[i] || !line_buf)
 		return (NULL);
 	while (line_buf[i] != '\0' && line_buf[i] != '\n')
 		i++;
@@ -83,11 +52,12 @@ char	*read_file(int fd, char *line_fd)
 	readed = 1;
 	if (!buf)
 		return (NULL);
-	while (!ft_strchr(line_fd, '\n') && readed != 0)
+	while (!found_char(line_fd, '\n') && readed != 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
 		if (readed == -1)
 		{
+			free(line_fd);
 			free(buf);
 			return (NULL);
 		}
@@ -110,7 +80,6 @@ char	*clean_line_buf(char *line_buf)
 		i++;
 	if (line_buf[i] == '\0')
 	{
-		ft_memset(line_buf, 0, ft_strlen(line_buf));
 		free(line_buf);
 		return (NULL);
 	}
@@ -122,7 +91,6 @@ char	*clean_line_buf(char *line_buf)
 		str[j++] = line_buf[i];
 	}
 	str[j] = '\0';
-	ft_memset(line_buf, 0, ft_strlen(line_buf));
 	free(line_buf);
 	return (str);
 }
